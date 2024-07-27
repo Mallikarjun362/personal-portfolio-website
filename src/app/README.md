@@ -2,12 +2,8 @@
 
 1. (Core)
    1. `human`
-   1. `admin`
-   1. `blog`
    1. `boring-blog`
-   1. `human`
    1. `master`
-1. (Development)
 1. (Personal)
 
 # CSS Global Design System (Using CSS Variables)

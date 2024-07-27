@@ -12,9 +12,8 @@ import blogPostSchema, { IBlogPost } from "../Schemas/Core/2_BlogPost";
 declare global {
   var mainConn: Connection;
 }
-
 const MONGODB_CONNECTION_URI =
-  "mongodb+srv://Tom:Jerry@cluster0.fmnms1i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&maxPoolSize=20&socketTimeoutMS=1000&minPoolSize=0";
+  "mongodb+srv://Tom:Jerry@cluster0.koq8kzq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&maxPoolSize=20&socketTimeoutMS=1000&minPoolSize=0";
 
 const getMainConnPoolSize = (): number | undefined =>
   (global.mainConn as any)?.base?.connections?.length;
