@@ -1,4 +1,3 @@
-import { IPeopleCommunity } from "./4_PeopleCommunity";
 import { contentBlockSchema, IContentBlock } from ".";
 import { ForeignModel } from "../../Utils";
 import { Schema } from "mongoose";
@@ -97,7 +96,6 @@ export interface IHumanRoot {
 
   // ADDITIONAL
   likedBoringBlogPosts: { [boringBlogPostDbId: string]: Date };
-  communities: Array<ForeignModel<IPeopleCommunity>>;
   following: Array<ForeignModel<IHumanRoot>>;
   settings: { [option: string]: any };
   notifications: Array<INotification>;
@@ -138,7 +136,6 @@ const validateUserName = (s: string) => {
 };
 
 export const humanRootSchema = new Schema<IHumanRoot>({
-  communities: [{ type: Schema.Types.ObjectId, ref: "PeopleCommunity" }],
   following: [{ type: Schema.Types.ObjectId, ref: "HumanRootModel" }],
   likedBoringBlogPosts: { type: Map, of: Date, default: () => ({}) },
   role: { type: String, enum: EHumanRole, default: EHumanRole.BASE },

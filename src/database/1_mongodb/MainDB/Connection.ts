@@ -7,7 +7,6 @@ import humanRootSchema, { IHumanRoot } from "../Schemas/Core/1_HumanRoot";
 import boringBlogPostSchema, {
   IBoringBlogPost,
 } from "../Schemas/Core/12_BoringBlogPost";
-import blogPostSchema, { IBlogPost } from "../Schemas/Core/2_BlogPost";
 
 declare global {
   var mainConn: Connection;
@@ -44,7 +43,6 @@ export const getMainConnection = async (): Promise<Connection> => {
     // CREATING MODELS
     connection.model("HumanRootModel", humanRootSchema);
     connection.model("BoringBlogPostModel", boringBlogPostSchema);
-    connection.model("BlogPostModel", blogPostSchema);
     (global as any)["mainConn"] = connection;
     return connection;
   }
@@ -53,7 +51,6 @@ export const getMainConnection = async (): Promise<Connection> => {
 interface IMainDBModels {
   HumanRootModel: MyMongoDBModel<IHumanRoot>;
   BoringBlogPostModel: MyMongoDBModel<IBoringBlogPost>;
-  BlogPostModel: MyMongoDBModel<IBlogPost>;
 }
 
 export const getMainDBModels = async (): Promise<IMainDBModels> => {
@@ -64,8 +61,5 @@ export const getMainDBModels = async (): Promise<IMainDBModels> => {
   // 2. Boring Blog Post Model
   const BoringBlogPostModel: MyMongoDBModel<IBoringBlogPost> =
     mainConnection.models["BoringBlogPostModel"];
-  // 3. Blog Post Model
-  const BlogPostModel: MyMongoDBModel<IBlogPost> =
-    mainConnection.models["BlogPostModel"];
-  return { HumanRootModel, BoringBlogPostModel, BlogPostModel };
+  return { HumanRootModel, BoringBlogPostModel };
 };

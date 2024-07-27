@@ -4,11 +4,13 @@ import GeneralProfile from "../_sections/GeneralProfile";
 import { useGlobalContext } from "@/app/_context/store";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoSettingsSharp } from "react-icons/io5";
+import { FaRegSmileBeam } from "react-icons/fa";
+import { PiSignOutBold } from "react-icons/pi";
+import { FaSmileBeam } from "react-icons/fa";
 import { IconType } from "react-icons";
 import { useEffect } from "react";
 import Link from "next/link";
-import { FaRegSmileBeam } from "react-icons/fa";
-import { FaSmileBeam } from "react-icons/fa";
+
 const QuickAccessTile = ({
   OutlineIcon,
   FillIcon,
@@ -53,8 +55,6 @@ export default function Base_HumanProfilePage() {
     (async () => {
       if (!currentUserDetails) {
         const a = await getCurrentUserDetails();
-        console.log(a);
-
         setCurrentUserDetails(a);
       }
     })();
@@ -81,12 +81,20 @@ export default function Base_HumanProfilePage() {
         }}
       >
         {currentUserDetails ? (
-          <QuickAccessTile
-            OutlineIcon={IoSettingsOutline}
-            FillIcon={IoSettingsSharp}
-            link="/human/settings"
-            title="Settings"
-          />
+          <>
+            <QuickAccessTile
+              OutlineIcon={IoSettingsOutline}
+              FillIcon={IoSettingsSharp}
+              link="/human/settings"
+              title="Settings"
+            />
+            <QuickAccessTile
+              OutlineIcon={PiSignOutBold}
+              FillIcon={PiSignOutBold}
+              link="/api/auth/signout"
+              title="Sign out"
+            />
+          </>
         ) : null}
         {currentUserDetails?.userName ? (
           <QuickAccessTile

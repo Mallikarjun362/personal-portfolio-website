@@ -1,6 +1,5 @@
 import { contentBlockSchema, IContentBlock } from ".";
 import { ForeignModel } from "../../Utils";
-import { IBlogPost } from "./2_BlogPost";
 import { Schema } from "mongoose";
 import {
   locationSchema,
@@ -14,7 +13,6 @@ import {
 
 interface IStdLocationStatsSummaryReport {
   topTrending: {
-    blogPosts: Array<string | IBlogPost>;
     interests: Array<string | IInterest>;
     communities: Array<string | any>;
   };

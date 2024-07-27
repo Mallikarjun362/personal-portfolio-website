@@ -1,8 +1,8 @@
 import { authOptions } from "../api/auth/[...nextauth]/options";
-import { MdOutlineNotificationsActive } from "react-icons/md";
 import { IoGameControllerOutline } from "react-icons/io5";
+import { RiMoneyRupeeCircleLine } from "react-icons/ri";
 import DropDownMenuButton from "./DropDownMenuButton";
-import { IoHomeOutline } from "react-icons/io5";
+import { IoSchoolOutline } from "react-icons/io5";
 import { PiSignOutBold } from "react-icons/pi";
 import { MdOutlineFeed } from "react-icons/md";
 import { getServerSession } from "next-auth";
@@ -25,28 +25,32 @@ export default async function PrimaryMainNavigationBar() {
           ...(session.user.email === "pmallikarjun307@gmail.com"
             ? [
                 {
-                  name: "Mrj3",
-                  link: "/mrj3",
+                  icon: <RiMoneyRupeeCircleLine />,
+                  name: "* Ecomonics",
+                  link: "/econ",
+                },
+                {
+                  icon: <IoSchoolOutline />,
+                  name: "* Education",
+                  link: "/edu",
+                },
+                {
                   icon: <IoGameControllerOutline />,
+                  name: "* Personal",
+                  link: "/mrj3",
                 },
               ]
             : []),
-          { name: "Home", link: "/", icon: <IoHomeOutline /> },
           {
-            name: "Boring Blog",
-            link: "/boring-blog",
             icon: <MdOutlineFeed />,
+            link: "/boring-blog",
+            name: "Boring Blog",
           },
           { name: "Profile", link: "/human", icon: <CgProfile /> },
           {
-            name: "Notifications",
-            link: "/notification",
-            icon: <MdOutlineNotificationsActive />,
-          },
-          {
-            name: "Sign out",
             link: "/api/auth/signout",
             icon: <PiSignOutBold />,
+            name: "Sign out",
           },
         ]
       : [{ icon: <LuLogIn />, name: "Sign in", link: "/api/auth/signin" }]),
