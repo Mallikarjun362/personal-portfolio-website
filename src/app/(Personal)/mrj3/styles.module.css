@@ -1,0 +1,19 @@
+/* CLASSIC DESKDOP DESIGN SYSTEM */
+
+.classic {
+  font-size: 25px;
+  padding: 100px 20%;
+}
+
+.classic h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 40px;
+}
+
+.classic section {
+  background-color: var(--bg);
+  border: 2px solid var(--mg);
+  border-radius: 10px;
+  margin: 50px 0;
+  padding: 20px;
+}
